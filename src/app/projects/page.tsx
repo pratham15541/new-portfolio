@@ -2,6 +2,13 @@
 import { githubLink, projects } from '@/constants/constant';
 import React from 'react';
 import Image from 'next/image';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Projects | Pratham Parikh',
+  description: 'Browse personal and professional projects developed by Pratham Parikh using React, Next.js, Node.js, and more.',
+  keywords: ['projects', 'portfolio projects', 'web apps', 'React', 'Next.js'],
+};
 
 function Projects() {
   return (

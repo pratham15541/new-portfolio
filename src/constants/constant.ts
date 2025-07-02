@@ -1,3 +1,5 @@
+export const siteUrl = 'https://pratham-parikh.vercel.app';
+
 export const logoImage = '/logo/logo.png';
 export const glbLocation = '/assets/3d/optimized-room.glb';
 export const matTextureLocation = '/assets/textures/mat1.png';

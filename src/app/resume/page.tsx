@@ -1,6 +1,13 @@
 import { resumePdfLocation } from '@/constants/constant';
 import { ExternalLink, Download } from 'lucide-react';
+import { Metadata } from 'next';
 import React from 'react';
+
+export const metadata: Metadata = {
+  title: 'Resume | Pratham Parikh',
+  description: 'View the resume of Pratham Parikh including education, skills, experience, and technical expertise.',
+  keywords: ['resume', 'CV', 'Pratham Parikh', 'software engineer resume'],
+};
 
 function Resume() {
   return (
