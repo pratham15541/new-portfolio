@@ -1,11 +1,10 @@
-import TransitionEffect from '@/components/ui/transistionEffect';
+
 import { hashnodeLink } from '@/constants/constant';
 import React from 'react';
 
 export default function Page() {
   return (
     <>
-      <TransitionEffect />
       <main className="w-full h-full flex items-center justify-center px-4 sm:px-6 md:px-12 bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
         <div className="text-center space-y-6 max-w-xl">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">

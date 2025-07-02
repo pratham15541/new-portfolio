@@ -80,7 +80,8 @@ export default function Navbar() {
               colors={['#40ffaa', '#4079ff', '#40ffaa', '#4079ff', '#40ffaa']}
               animationSpeed={3}
               showBorder={false}
-              className="font-bold text-2xl"
+            
+              className="font-bold text-2xl bg-none"
             >
               Pratham Parikh
             </GradientText>

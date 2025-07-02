@@ -4,7 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import { montSerrat } from '@/components/export-font';
-import PageWrapper from './page-wrapper';
+import PageTransitionLoader from '@/components/page-transistion';
 
 export const metadata: Metadata = {
   title: 'Pratham Parikh (Portfolio)',
@@ -19,12 +19,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={` ${montSerrat.className} antialiased flex flex-col h-screen `}>
+      <body className={`${montSerrat.className} antialiased flex flex-col h-screen`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Navbar />
-          <main className="grow ">
-            <PageWrapper>{children}</PageWrapper>
+
+          <main className="relative grow">
+            <PageTransitionLoader />
+            {children}
           </main>
+
           <Footer />
         </ThemeProvider>
       </body>

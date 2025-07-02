@@ -21,6 +21,8 @@ function HeroExperience() {
             minDistance={5}
             minPolarAngle={Math.PI / 5}
             maxPolarAngle={Math.PI / 2}
+            autoRotate={true}
+            autoRotateSpeed={isMobile ? 0.5 : isTablet ? 0.8 : 1.2}
           />
           {/* 
          minPolarAngle={Math.PI / 3.5}  // restrict up/down

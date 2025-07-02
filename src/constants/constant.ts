@@ -10,13 +10,7 @@ export const hashnodeLink = 'https://pratham15541.hashnode.dev';
 export const twitterLink = 'https://x.com/pratham15541';
 export const instagramLink = 'https://www.instagram.com/pratham15541';
 export const emailLink = 'mailto:prathamparikh94@gmail.com';
-
-export interface TechStackIcon {
-  name: string;
-  modelPath: string;
-  scale: number;
-  rotation: [number, number, number];
-}
+import { TechStackIcon, Project, Experience } from '@/interfaces/constant';
 
 export const techStackIcons: TechStackIcon[] = [
   {
@@ -36,5 +30,34 @@ export const techStackIcons: TechStackIcon[] = [
     modelPath: '/assets/3d/git-svg-transformed.glb',
     scale: 0.05,
     rotation: [0, -Math.PI / 4, 0],
+  },
+];
+
+export const projects: Project[] = [
+  {
+    name: 'ShellMind',
+    description: 'AI CLI tool.',
+    image: '/images/projects/shellmind.png',
+    githubLink: 'https://github.com/pratham15541/shellmind',
+    techStack: ['Nodejs', 'Gemini'],
+  },
+  {
+    name: 'Codebox',
+    description: 'A online code editor and compiler.',
+    image: '/images/projects/codebox.png',
+    githubLink: 'https://github.com/pratham15541/codebox-client',
+    techStack: ['Nodejs', 'React', 'Webcontainer', 'Express', 'MongoDB'],
+  },
+];
+
+export const experiences: Experience[] = [
+  {
+    title: 'Full Stack Developer',
+    company: 'SEPL',
+    duration: 'April 2024 - June 2024',
+    description: `Improved the performance of the existing codebase by 30% by refactoring and optimizing the code.
+    Fixed critical bugs in the applications.
+    `,
+    techStack: ['PHP', 'Jquery', 'MSSQL'],
   },
 ];
