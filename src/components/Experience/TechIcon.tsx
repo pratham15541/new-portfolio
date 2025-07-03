@@ -3,32 +3,54 @@
 import { TechStackIcon } from '@/interfaces/constant';
 import { Environment, Float, OrbitControls, useGLTF } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import React from 'react';
+import React, { Suspense } from 'react';
+import { useInView } from 'react-intersection-observer';
 
-function TechIcon({ model }: { model: TechStackIcon }) {
-  const scene = useGLTF(model.modelPath);
-  
+// ✅ Preload models
+import { techStackIcons } from '@/constants/constant';
+techStackIcons.forEach((icon) => useGLTF.preload(icon.modelPath));
+
+// 3D Scene content
+function TechModel({ model }: { model: TechStackIcon }) {
+  const gltf = useGLTF(model.modelPath);
   return (
-    <Canvas
-      gl={{
-        // Prevent context loss - these are the only changes
-        preserveDrawingBuffer: true,
-        antialias: true,
-        alpha: true,
-        failIfMajorPerformanceCaveat: false,
-        powerPreference: "default"
-      }}
-    >
+    <>
       <ambientLight intensity={0.3} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
       <Environment preset="city" />
-      <OrbitControls enableZoom={false} autoRotate={true}  autoRotateSpeed={0.5} />
+      <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
       <Float speed={5.5} rotationIntensity={0.5} floatIntensity={0.9}>
         <group scale={model.scale} rotation={model.rotation}>
-          <primitive object={scene.scene} />
+          <primitive object={gltf.scene} />
         </group>
       </Float>
-    </Canvas>
+    </>
+  );
+}
+
+// Wrapper Component
+function TechIcon({ model }: { model: TechStackIcon }) {
+  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  return (
+    <div ref={ref} className="w-full h-32">
+      {inView ? (
+        <Canvas
+          gl={{
+            preserveDrawingBuffer: true,
+            antialias: true,
+            alpha: true,
+            powerPreference: 'high-performance',
+          }}
+        >
+          <Suspense fallback={null}>
+            <TechModel model={model} />
+          </Suspense>
+        </Canvas>
+      ) : (
+        <></>
+      )}
+    </div>
   );
 }
 

@@ -11,13 +11,23 @@ import { siteUrl } from '@/constants/constant';
 
 export const metadata: Metadata = {
   title: 'Pratham Parikh (Portfolio)',
-  description: 'Pratham Parikh, a software engineer and developer specializing in full-stack web development and performance-focused design.',
-  keywords: ['Pratham Parikh', 'software engineer', 'web developer', 'portfolio', 'React developer', 'Next.js', 'JavaScript'],
+  description:
+    'Pratham Parikh, a software engineer and developer specializing in full-stack web development and performance-focused design.',
+  keywords: [
+    'Pratham Parikh',
+    'software engineer',
+    'web developer',
+    'portfolio',
+    'React developer',
+    'Next.js',
+    'JavaScript',
+  ],
   authors: [{ name: 'Pratham Parikh' }],
   creator: 'Pratham Parikh',
   openGraph: {
     title: 'Pratham Parikh - Full Stack Developer',
-    description: 'Explore projects, experience, and resume of Pratham Parikh, a passionate software developer.',
+    description:
+      'Explore projects, experience, and resume of Pratham Parikh, a passionate software developer.',
     url: siteUrl,
     siteName: 'Pratham Parikh Portfolio',
     locale: 'en_US',
@@ -50,7 +60,7 @@ export default function RootLayout({
 
           <Footer />
         </ThemeProvider>
-         <Analytics />
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>

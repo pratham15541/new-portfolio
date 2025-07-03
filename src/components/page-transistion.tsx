@@ -18,14 +18,13 @@ export default function PageTransitionLoader() {
     <AnimatePresence>
       {loading && (
         <motion.div
-  className="absolute inset-0 bg-white dark:bg-black z-50 flex items-center justify-center"
-  initial={{ opacity: 1 }}
-  exit={{ opacity: 0 }}
-  transition={{ duration: 0.4 }}
->
-  <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-</motion.div>
-
+          className="absolute max-h-screen inset-0 bg-white dark:bg-black z-50 flex items-center justify-center"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+        </motion.div>
       )}
     </AnimatePresence>
   );

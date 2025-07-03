@@ -11,7 +11,7 @@ import * as THREE from 'three';
 import { glbLocation, matTextureLocation } from '@/constants/constant';
 
 export function Room(props) {
-  const { nodes, materials } = useGLTF(glbLocation);
+  const { nodes, materials } = useGLTF(glbLocation,true,true);
   const screensRef = useRef();
   const matcapTexture = useTexture(matTextureLocation);
 
@@ -94,4 +94,4 @@ export function Room(props) {
   );
 }
 
-useGLTF.preload(glbLocation);
+useGLTF.preload(glbLocation,true,true);

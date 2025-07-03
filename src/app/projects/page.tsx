@@ -22,7 +22,7 @@ function Projects() {
             My Projects
           </h1>
           <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400">
-            {`Here are some of the projects I've worked on. Check out my`}
+            {`Here are some of the projects I've worked on. Check out my `}
             <a
               href={githubLink}
               target="_blank"
@@ -44,7 +44,7 @@ function Projects() {
                 className="group bg-gray-50 dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border border-gray-200 dark:border-gray-800"
               >
                 {/* Project Image */}
-                <div className="relative h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800">
+                <div className="relative w-full h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800">
                   {project.image ? (
                     <Image
                       src={project.image}
@@ -88,6 +88,7 @@ function Projects() {
 
                   {/* Links */}
                   <div className="flex gap-3 pt-2">
+                    
                     <a
                       href={project.githubLink}
                       target="_blank"
@@ -123,14 +124,14 @@ function Projects() {
           <div className="text-center mt-12 p-8 bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800">
             <h3 className="text-lg font-medium mb-2">More Projects Coming Soon!</h3>
             <p className="text-gray-600 dark:text-gray-400 text-sm">
-              {`I'm constantly working on new projects. Check back later or visit my`}
+              {`I'm constantly working on new projects. Check back later or visit my `}
               <a
                 href={githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 dark:text-blue-400 underline underline-offset-2 hover:text-blue-800 dark:hover:text-blue-300 transition-colors"
               >
-                GitHub
+                {' '}GitHub
               </a>
               {' '}for the latest updates.
             </p>

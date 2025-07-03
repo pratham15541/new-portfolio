@@ -10,10 +10,18 @@ function HeroExperience() {
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
   return (
     <>
-      <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
+      <Canvas
+  camera={{ position: [0, 0, 15], fov: 45 }}
+  gl={{
+    preserveDrawingBuffer: true,
+    antialias: true,
+    alpha: true,
+    powerPreference: 'high-performance',
+  }}
+>
         <PerformanceMonitor>
           <HeroLight />
-          <Particles count={100} />
+          <Particles count={isMobile ? 30 : isTablet ? 60 : 100} />
           <OrbitControls
             enablePan={false}
             enableZoom={!isTablet}
@@ -22,7 +30,7 @@ function HeroExperience() {
             minPolarAngle={Math.PI / 5}
             maxPolarAngle={Math.PI / 2}
             autoRotate={true}
-            autoRotateSpeed={isMobile ? 0.5 : isTablet ? 0.8 : 1.2}
+            autoRotateSpeed={isMobile ? 0.5 : isTablet ? 0.8 : 0.9}
           />
           {/* 
          minPolarAngle={Math.PI / 3.5}  // restrict up/down
@@ -48,6 +56,7 @@ export default HeroExperience;
 function HeroLight() {
   return (
     <>
+    
       <spotLight position={[2, 5, 6]} intensity={100} angle={0.15} penumbra={0.2} color={'white'} />
       <spotLight position={[4, 5, 4]} intensity={90} angle={0.3} penumbra={0.5} color="#4cc9f0" />
       <spotLight position={[-3, 5, 5]} intensity={130} angle={0.4} penumbra={1} color="#9d4edd" />
