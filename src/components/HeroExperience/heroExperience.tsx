@@ -1,52 +1,62 @@
+
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PerformanceMonitor } from '@react-three/drei';
 import { Room } from './room';
 import * as Three from 'three';
 import Particles from './particles';
 function HeroExperience() {
+  const [mounted, setMounted] = useState(false);
   const isTablet = typeof window !== 'undefined' && window.innerWidth <= 1024;
   const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
+    useEffect(() => {
+    // Mount 3D scene only when browser is idle
+    if ('requestIdleCallback' in window) {
+      (window as Window & typeof globalThis & {
+  requestIdleCallback?: (cb: IdleRequestCallback, options?: IdleRequestOptions) => number;
+}).requestIdleCallback?.(() => setMounted(true));
+
+    } else {
+      setTimeout(() => setMounted(true), 300); // Fallback
+    }
+  }, []);
+
+  if (!mounted) return null;
   return (
     <>
       <Canvas
-  camera={{ position: [0, 0, 15], fov: 45 }}
-  gl={{
-    preserveDrawingBuffer: true,
-    antialias: true,
-    alpha: true,
-    powerPreference: 'high-performance',
-  }}
->
-        <PerformanceMonitor>
-          <HeroLight />
-          <Particles count={isMobile ? 30 : isTablet ? 60 : 100} />
-          <OrbitControls
-            enablePan={false}
-            enableZoom={!isTablet}
-            maxDistance={20}
-            minDistance={5}
-            minPolarAngle={Math.PI / 5}
-            maxPolarAngle={Math.PI / 2}
-            autoRotate={true}
-            autoRotateSpeed={isMobile ? 0.5 : isTablet ? 0.8 : 0.9}
-          />
-          {/* 
-         minPolarAngle={Math.PI / 3.5}  // restrict up/down
-  maxPolarAngle={Math.PI / 2.2}
-  minAzimuthAngle={-Math.PI / 8} // restrict left/right
-  maxAzimuthAngle={Math.PI / 8}
-   */}
-          <group
-            scale={isMobile ? 1.5 : isTablet ? 1.1 : 1.2}
-            position={[0, -3.5, 0]}
-            rotation={[0, -Math.PI / 4, 0]}
-          >
-            <Room />
-          </group>
-        </PerformanceMonitor>
-      </Canvas>
+      camera={{ position: [0, 0, 15], fov: 45 }}
+      gl={{
+        preserveDrawingBuffer: true,
+        antialias: true,
+        alpha: true,
+        powerPreference: 'high-performance',
+      }}
+    >
+      <PerformanceMonitor>
+        <HeroLight />
+        <Particles count={isMobile ? 30 : isTablet ? 60 : 80} />
+        <OrbitControls
+          enablePan={false}
+          enableZoom={!isTablet}
+          maxDistance={20}
+          minDistance={5}
+          minPolarAngle={Math.PI / 5}
+          maxPolarAngle={Math.PI / 2}
+          autoRotate={true}
+          autoRotateSpeed={isMobile ? 0.5 : isTablet ? 0.8 : 0.9}
+        />
+        <group
+          scale={isMobile ? 1.5 : isTablet ? 1.1 : 1.2}
+          position={[0, -3.5, 0]}
+          rotation={[0, -Math.PI / 4, 0]}
+        >
+          <Room />
+        </group>
+      </PerformanceMonitor>
+    </Canvas>
     </>
   );
 }

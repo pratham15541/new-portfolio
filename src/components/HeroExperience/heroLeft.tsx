@@ -1,5 +1,5 @@
 import React from 'react';
-import RotatingText from '../blocks/TextAnimations/RotatingText/RotatingText';
+import RotatingText from '@/components/blocks/TextAnimations/RotatingText/RotatingTextWrapper';
 
 function HeroLeft() {
   const words = ['scalable', 'responsive', 'flexible', 'delightful'];

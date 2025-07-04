@@ -60,8 +60,8 @@ export default function RootLayout({
 
           <Footer />
         </ThemeProvider>
-        <Analytics />
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

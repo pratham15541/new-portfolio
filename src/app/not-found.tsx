@@ -1,6 +1,15 @@
 'use client';
+import dynamic from 'next/dynamic';
 import React from 'react';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+
+// Dynamically import the Lottie component with no SSR
+const DotLottieReact = dynamic(
+  () => import('@lottiefiles/dotlottie-react').then(mod => mod.DotLottieReact),
+  {
+    ssr: false,
+    loading: () => <div className="w-full h-40 animate-pulse bg-gray-200 dark:bg-gray-700 rounded-lg mt-10" />,
+  }
+);
 
 function NotFound() {
   return (
