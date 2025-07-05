@@ -1,11 +1,11 @@
-
 import { hashnodeLink } from '@/constants/constant';
 import { Metadata } from 'next';
 import React from 'react';
 
 export const metadata: Metadata = {
   title: 'Blogs | Pratham Parikh',
-  description: 'Blogs by Pratham Parikh, a software engineer and developer specializing in full-stack web development and performance-focused design.',
+  description:
+    'Blogs by Pratham Parikh, a software engineer and developer specializing in full-stack web development and performance-focused design.',
   keywords: ['blogs', 'articles', 'Pratham Parikh', 'software engineer'],
 };
 

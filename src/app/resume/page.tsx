@@ -5,7 +5,8 @@ import React from 'react';
 
 export const metadata: Metadata = {
   title: 'Resume | Pratham Parikh',
-  description: 'View the resume of Pratham Parikh including education, skills, experience, and technical expertise.',
+  description:
+    'View the resume of Pratham Parikh including education, skills, experience, and technical expertise.',
   keywords: ['resume', 'CV', 'Pratham Parikh', 'software engineer resume'],
 };
 

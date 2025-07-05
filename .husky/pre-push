@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🔍 Checking Prettier formatting..."
+prettier --check "src/**/*.{js,ts,tsx,jsx,json,css,scss,md}" || exit 1
+
+echo "🛠 Running Next.js build (includes lint)..."
+npm run build || exit 1
+
+echo "✅ Push passed all checks!"

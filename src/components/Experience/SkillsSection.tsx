@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic';
 import { techStackIcons } from '@/constants/constant';
 import { Skeleton } from '@/components/ui/skeleton';
 
-const TechIcon = dynamic(() => import('@/components/Experience/TechIcon'), { 
+const TechIcon = dynamic(() => import('@/components/Experience/TechIcon'), {
   ssr: false,
   loading: () => <div>Loading...</div>,
 });

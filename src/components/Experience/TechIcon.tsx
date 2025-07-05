@@ -1,18 +1,18 @@
 'use client';
 
 import { TechStackIcon } from '@/interfaces/constant';
-import { Environment, Float, OrbitControls, useGLTF } from '@react-three/drei';
+import { Environment, Float, Html, OrbitControls, useGLTF } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import React, { Suspense } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 // ✅ Preload models
 import { techStackIcons } from '@/constants/constant';
-techStackIcons.forEach((icon) => useGLTF.preload(icon.modelPath));
+techStackIcons.forEach((icon) => useGLTF.preload(icon.modelPath, true, true));
 
 // 3D Scene content
 function TechModel({ model }: { model: TechStackIcon }) {
-  const gltf = useGLTF(model.modelPath);
+  const gltf = useGLTF(model.modelPath, true, true);
   return (
     <>
       <ambientLight intensity={0.3} />
@@ -43,7 +43,7 @@ function TechIcon({ model }: { model: TechStackIcon }) {
             powerPreference: 'high-performance',
           }}
         >
-          <Suspense fallback={null}>
+          <Suspense fallback={<Html center> Loading</Html>}>
             <TechModel model={model} />
           </Suspense>
         </Canvas>

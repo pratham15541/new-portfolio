@@ -5,7 +5,7 @@ export interface TechStackIcon {
   rotation: [number, number, number];
 }
 
-export interface Project{
+export interface Project {
   name: string;
   description: string;
   githubLink: string;
@@ -14,13 +14,13 @@ export interface Project{
   techStack?: string[];
 }
 
-export interface Experience{
-    title: string;
-    company: string;
-    duration: string;
-    description: string;
-    techStack: string[];
-    image?: string;
-    githubLink?: string;
-    liveLink?: string;
+export interface Experience {
+  title: string;
+  company: string;
+  duration: string;
+  description: string;
+  techStack: string[];
+  image?: string;
+  githubLink?: string;
+  liveLink?: string;
 }

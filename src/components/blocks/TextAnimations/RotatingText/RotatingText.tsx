@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-'use client'
+'use client';
 import React, {
   forwardRef,
   useCallback,

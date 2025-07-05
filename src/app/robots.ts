@@ -1,6 +1,6 @@
-import { siteUrl } from '@/constants/constant'
-import type { MetadataRoute } from 'next'
- 
+import { siteUrl } from '@/constants/constant';
+import type { MetadataRoute } from 'next';
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
@@ -9,5 +9,5 @@ export default function robots(): MetadataRoute.Robots {
       disallow: '/private/',
     },
     sitemap: `${siteUrl}/sitemap.xml`,
-  }
+  };
 }

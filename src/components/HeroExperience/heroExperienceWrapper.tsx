@@ -7,7 +7,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 const HeroExperience = dynamic(() => import('./heroExperience'), {
   ssr: false,
   loading: () => (
-    <Skeleton className="w-full h-full bg-gray-100 dark:bg-gray-900 animate-pulse rounded-xl" />
+    <Skeleton className="w-full h-full bg-gray-400 dark:bg-gray-900 animate-pulse rounded-xl" />
   ),
 });
 
@@ -30,7 +30,9 @@ export default function HeroExperienceWrapper() {
   if (!mounted) return null;
 
   return (
-    <div className={`w-full h-full transition-opacity duration-500 ${mounted ? 'opacity-100' : 'opacity-0'}`}>
+    <div
+      className={`w-full h-full transition-opacity duration-500 ${mounted ? 'opacity-100' : 'opacity-0'}`}
+    >
       <HeroExperience />
     </div>
   );

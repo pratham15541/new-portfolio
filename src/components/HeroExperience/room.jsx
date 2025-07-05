@@ -3,7 +3,7 @@ import React, { useMemo, useRef } from 'react';
 import { useGLTF, useTexture } from '@react-three/drei';
 import { EffectComposer, SelectiveBloom } from '@react-three/postprocessing';
 import { BlendFunction } from 'postprocessing';
-import * as THREE from 'three';
+import { MeshStandardMaterial, MeshPhongMaterial } from 'three';
 import { glbLocation, matTextureLocation } from '@/constants/constant';
 
 export function Room(props) {
@@ -12,40 +12,22 @@ export function Room(props) {
   const screensRef = useRef();
 
   // Memoized materials
-  const curtainMaterial = useMemo(
-    () => new THREE.MeshPhongMaterial({ color: '#d90429' }),
-    []
-  );
+  const curtainMaterial = useMemo(() => new MeshPhongMaterial({ color: '#d90429' }), []);
 
   const bodyMaterial = useMemo(
-    () => new THREE.MeshPhongMaterial({ map: matcapTexture }),
+    () => new MeshPhongMaterial({ map: matcapTexture }),
     [matcapTexture]
   );
 
-  const tableMaterial = useMemo(
-    () => new THREE.MeshPhongMaterial({ color: '#582f0e' }),
-    []
-  );
+  const tableMaterial = useMemo(() => new MeshPhongMaterial({ color: '#582f0e' }), []);
 
-  const radiatorMaterial = useMemo(
-    () => new THREE.MeshPhongMaterial({ color: '#fff' }),
-    []
-  );
+  const radiatorMaterial = useMemo(() => new MeshPhongMaterial({ color: '#fff' }), []);
 
-  const compMaterial = useMemo(
-    () => new THREE.MeshStandardMaterial({ color: '#fff' }),
-    []
-  );
+  const compMaterial = useMemo(() => new MeshStandardMaterial({ color: '#fff' }), []);
 
-  const pillowMaterial = useMemo(
-    () => new THREE.MeshPhongMaterial({ color: '#8338ec' }),
-    []
-  );
+  const pillowMaterial = useMemo(() => new MeshPhongMaterial({ color: '#8338ec' }), []);
 
-  const chairMaterial = useMemo(
-    () => new THREE.MeshPhongMaterial({ color: '#000' }),
-    []
-  );
+  const chairMaterial = useMemo(() => new MeshPhongMaterial({ color: '#000' }), []);
 
   // Meshes using blinn1 material
   const blinn1Meshes = [
@@ -91,7 +73,11 @@ export function Room(props) {
       <mesh geometry={nodes.cabin_blinn1_0.geometry} material={tableMaterial} />
       <mesh geometry={nodes.chair_body_blinn1_0.geometry} material={chairMaterial} />
       <mesh geometry={nodes.comp_blinn1_0.geometry} material={compMaterial} />
-      <mesh ref={screensRef} geometry={nodes.emis_lambert1_0.geometry} material={materials.lambert1} />
+      <mesh
+        ref={screensRef}
+        geometry={nodes.emis_lambert1_0.geometry}
+        material={materials.lambert1}
+      />
       <mesh geometry={nodes.pillows_blinn1_0.geometry} material={pillowMaterial} />
       <mesh geometry={nodes.table_blinn1_0.geometry} material={tableMaterial} />
       <mesh geometry={nodes.radiator_blinn1_0.geometry} material={radiatorMaterial} />
@@ -99,11 +85,7 @@ export function Room(props) {
 
       {/* Shared material meshes */}
       {blinn1Meshes.map((key) => (
-        <mesh
-          key={key}
-          geometry={nodes[key]?.geometry}
-          material={materials.blinn1}
-        />
+        <mesh key={key} geometry={nodes[key]?.geometry} material={materials.blinn1} />
       ))}
     </group>
   );

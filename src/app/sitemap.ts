@@ -10,7 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'yearly',
       priority: 1,
-      images:[]
+      images: [],
     },
     {
       url: `${siteUrl}/projects`,
