@@ -7,7 +7,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 const HeroExperience = dynamic(() => import('./heroExperience'), {
   ssr: false,
   loading: () => (
-    <Skeleton className="w-full h-full bg-gray-100 dark:bg-gray-900 animate-pulse rounded-xl" />
+    <Skeleton className="w-full h-full bg-gray-400 dark:bg-gray-900 animate-pulse rounded-xl" />
   ),
 });
 

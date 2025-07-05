@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PerformanceMonitor } from '@react-three/drei';
 import { Room } from './room';
-import * as Three from 'three';
+import {RectAreaLight} from 'three';
 import Particles from './particles';
 function HeroExperience() {
   const [mounted, setMounted] = useState(false);
@@ -34,6 +34,7 @@ function HeroExperience() {
         alpha: true,
         powerPreference: 'high-performance',
       }}
+      className='bg-gray-400 dark:bg-gray-950 rounded-2xl'
     >
       <PerformanceMonitor>
         <HeroLight />
@@ -72,7 +73,7 @@ function HeroLight() {
       <spotLight position={[-3, 5, 5]} intensity={130} angle={0.4} penumbra={1} color="#9d4edd" />
 
       <primitive
-        object={new Three.RectAreaLight('#A259FF', 8, 3, 2)}
+        object={new RectAreaLight('#A259FF', 8, 3, 2)}
         position={[1, 3, 4]}
         intensity={15}
         rotation={[-Math.PI / 4, Math.PI / 4, 0]}
