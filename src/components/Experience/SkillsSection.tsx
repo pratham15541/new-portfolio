@@ -57,6 +57,24 @@ export default function SkillsSection() {
             <h3 className="text-lg font-semibold text-center">{tech.name}</h3>
           </motion.div>
         ))}
+
+        {/* Now render image icons after 3D icons */}
+        {/* {techStackImages.map((img) => (
+    <motion.div
+      key={img.name}
+      variants={itemVariants}
+      className="p-6 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:scale-105 bg-gray-100 dark:bg-gray-800 flex flex-col items-center justify-center border border-gray-200 dark:border-gray-700"
+    >
+      <div className="mb-4 rounded-xl flex items-center justify-center h-32">
+        <img
+          src={img.src}
+          alt={img.name}
+          className="w-64 h-64 object-contain rounded-lg"
+        />
+      </div>
+      <h3 className="text-lg font-semibold text-center">{img.name}</h3>
+    </motion.div>
+  ))} */}
       </motion.div>
     </div>
   );

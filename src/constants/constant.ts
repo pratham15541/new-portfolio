@@ -20,20 +20,34 @@ export const techStackIcons: TechStackIcon[] = [
     modelPath: '/assets/3d/react-logo-transformed.glb',
     scale: 1,
     rotation: [0, 0, 0],
+    src: '/images/techIcons/react.png',
   },
   {
     name: 'Backend Developer',
     modelPath: '/assets/3d/node-transformed.glb',
     scale: 5,
     rotation: [0, -Math.PI / 2, 0],
+    src: '/images/techIcons/node.png',
   },
   {
     name: 'Project Manager',
     modelPath: '/assets/3d/git-svg-transformed.glb',
     scale: 0.05,
     rotation: [0, -Math.PI / 4, 0],
+    src: '/images/techIcons/git.svg',
   },
+  // {
+  //   name: 'PReact',
+  //   src: '/images/techIcons/react.png',
+  // },
 ];
+
+// export const techStackImages = [
+//   {
+//     name: 'React',
+//     src: '/images/techIcons/react.png',
+//   },
+// ];
 
 export const projects: Project[] = [
   {

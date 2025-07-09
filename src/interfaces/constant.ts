@@ -1,8 +1,9 @@
 export interface TechStackIcon {
   name: string;
-  modelPath: string;
-  scale: number;
-  rotation: [number, number, number];
+  modelPath?: string;
+  scale?: number;
+  rotation?: [number, number, number];
+  src: string; // Optional image source for fallback or display
 }
 
 export interface Project {

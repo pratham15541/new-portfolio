@@ -1,18 +1,19 @@
 'use client';
 
 import { TechStackIcon } from '@/interfaces/constant';
-import { Environment, Float, Html, OrbitControls, useGLTF } from '@react-three/drei';
+import { Environment, Float, OrbitControls, useGLTF } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import React, { Suspense } from 'react';
+import React, { Suspense, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+import Image from 'next/image';
 
-// ✅ Preload models
-import { techStackIcons } from '@/constants/constant';
-techStackIcons.forEach((icon) => useGLTF.preload(icon.modelPath, true, true));
+function TechModel({ model, onLoad }: { model: TechStackIcon; onLoad: () => void }) {
+  const gltf = useGLTF(model.modelPath!); // we check presence before this is used
 
-// 3D Scene content
-function TechModel({ model }: { model: TechStackIcon }) {
-  const gltf = useGLTF(model.modelPath, true, true);
+  React.useEffect(() => {
+    onLoad();
+  }, [onLoad]);
+
   return (
     <>
       <ambientLight intensity={0.3} />
@@ -28,27 +29,39 @@ function TechModel({ model }: { model: TechStackIcon }) {
   );
 }
 
-// Wrapper Component
 function TechIcon({ model }: { model: TechStackIcon }) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [loaded, setLoaded] = useState(false);
 
+  //  If no 3D model, just render the image directly
+  if (!model.modelPath) {
+    return (
+      <div className="w-full h-32 flex items-center justify-center">
+        <Image src={model.src} alt={model.name} className="w-24 h-24 object-contain rounded-lg" />
+      </div>
+    );
+  }
+
+  // Otherwise, show image until 3D model loads
   return (
-    <div ref={ref} className="w-full h-32">
-      {inView ? (
+    <div ref={ref} className="relative w-full h-32 flex items-center justify-center">
+      {!loaded && (
+        <Image
+          src={model.src}
+          alt={model.name}
+          className="w-24 h-24 object-contain rounded-lg absolute"
+        />
+      )}
+
+      {inView && (
         <Canvas
-          gl={{
-            preserveDrawingBuffer: true,
-            antialias: true,
-            alpha: true,
-            powerPreference: 'high-performance',
-          }}
+          className="w-full h-full"
+          gl={{ preserveDrawingBuffer: true, antialias: true, alpha: true }}
         >
-          <Suspense fallback={<Html center> Loading</Html>}>
-            <TechModel model={model} />
+          <Suspense fallback={null}>
+            <TechModel model={model} onLoad={() => setLoaded(true)} />
           </Suspense>
         </Canvas>
-      ) : (
-        <></>
       )}
     </div>
   );
