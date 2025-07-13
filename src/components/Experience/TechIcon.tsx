@@ -37,7 +37,13 @@ function TechIcon({ model }: { model: TechStackIcon }) {
   if (!model.modelPath) {
     return (
       <div className="w-full h-32 flex items-center justify-center">
-        <Image src={model.src} alt={model.name} className="w-24 h-24 object-contain rounded-lg" />
+        <Image
+          src={model.src}
+          alt={model.name}
+          width={96}
+          height={96}
+          className="w-24 h-24 object-contain rounded-lg"
+        />
       </div>
     );
   }
@@ -49,6 +55,8 @@ function TechIcon({ model }: { model: TechStackIcon }) {
         <Image
           src={model.src}
           alt={model.name}
+          width={96}
+          height={96}
           className="w-24 h-24 object-contain rounded-lg absolute"
         />
       )}

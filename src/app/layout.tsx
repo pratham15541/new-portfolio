@@ -4,10 +4,10 @@ import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import { montSerrat } from '@/components/export-font';
-import PageTransitionLoader from '@/components/page-transistion';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
 import { siteUrl } from '@/constants/constant';
+import PageTransitionLoader from '@/components/page-transistion';
 
 export const metadata: Metadata = {
   title: 'Pratham Parikh (Portfolio)',

@@ -1,16 +1,16 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'motion/react';
 
 export default function PageTransitionLoader() {
   const pathname = usePathname();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Delay to show loading briefly
     setLoading(true);
-    const timeout = setTimeout(() => setLoading(false), 500); // adjust duration
+    const timeout = setTimeout(() => setLoading(false), 500); // adjust duration as needed
     return () => clearTimeout(timeout);
   }, [pathname]);
 
@@ -18,13 +18,13 @@ export default function PageTransitionLoader() {
     <AnimatePresence>
       {loading && (
         <motion.div
-          className="absolute max-h-screen inset-0 bg-white dark:bg-black z-50 flex items-center justify-center"
-          initial={{ opacity: 1 }}
+          className="fixed top-0 left-0 w-full z-[100]"
+          initial={{ width: '0%' }}
+          animate={{ width: '100%' }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-        </motion.div>
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
+          style={{ height: 3, background: 'linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%)' }}
+        />
       )}
     </AnimatePresence>
   );
